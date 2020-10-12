@@ -1,0 +1,22 @@
+﻿<Window x:Class="Planner_of_the_Month.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Planner_of_the_Month"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <DataGrid x:Name="TasksView" Loaded="TasksView_Loaded" AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Header="Номер" x:Name="NumberTask"/>
+                <DataGridTextColumn Header="Наименование" x:Name="NameTask"/>
+                <DataGridTextColumn Header="Категория" x:Name="CatagoryTask"/>
+                <DataGridTextColumn Header="Исполнители" x:Name="ExecutorsTask"/>
+                <DataGridTextColumn Header="Плановая дата выполнения" x:Name="PlanDateTask"/>
+                <DataGridTextColumn Header="Реальная дата выполнения" x:Name="RealDateTask"/>
+            </DataGrid.Columns>
+        </DataGrid>
+
+    </Grid>
+</Window>
