@@ -15,54 +15,49 @@ using System.Windows.Shapes;
 
 namespace Planner_of_the_Month
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         public MainWindow()
         {
-            //using (TasksContext db = new TasksContext())
-            //{
-            //    List<Tasks> FullList = (from item in db.Tasks
-            //                            select item).ToList();
-            //    if (FullList.Count() != 0)
-            //    {
-            //        TasksView.ItemsSource = FullList;
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("База данных пуста, необходимо внести значения!");
-            //    }
-                
-            //}
             InitializeComponent();
         }
 
         private void TasksView_Loaded(object sender, RoutedEventArgs e)
         {
-            using (TasksContext db = new TasksContext())
+            using (ApplicationContext db = new ApplicationContext())
             {
-                var Task = new Tasks
+                /*var Task = new Task
                 {
-                    Name = "Администрирование и поддежка пользователей \"1С:УПП\"",
+                    Name = "Администрирование и поддержка пользователей \"1С:УПП\"",
                     Category = CategoryTask.АСУП,
-                    Executors = new List<string> { "Скрябина М.В." },
-                    PlanComplitionDate = DateTime.Now,
-                    RealComplitionDate = DateTime.Now
+                    Executors = "Скрябина М.В.",
+                    MonthlyType = true
                 };
-                db.Tasks.Add(Task);
-                db.SaveChanges();
 
-                var currentTask = (from task in db.Tasks
-                                  orderby task.Name
-                                  select task).ToList();
-                TasksView.ItemsSource = currentTask.ToList();
+                db.Tasks.Add(Task);
+                db.SaveChanges();*/
+
+                var tasks = db.Tasks.ToList();
+                TasksView.ItemsSource = tasks;
             }
-            //var Task = new Tasks("Администрирование и поддежка пользователей \"1С:УПП\"", CategoryTask.АСУП, new List<string> { "Скрябина М.В." });
-            //List<Tasks> Result = new List<Tasks> { };
-            //Result.Add(Task);
-            //TasksView.ItemsSource = Result;
+        }
+
+        private void TasksView_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            var editTask = new EditTask();
+            editTask.Owner = this;
+            editTask.Show();
+        }
+
+        private void AddTask_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void DeleteTask_Click(object sender, RoutedEventArgs e)
+        {
+            var selectIndex = TasksView.SelectedIndex;
+            var row = 
         }
     }
 }

@@ -5,18 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Planner_of_the_Month"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Планировщие задач на месяц" Height="800" Width="1275">
     <Grid>
-        <DataGrid x:Name="TasksView" Loaded="TasksView_Loaded" AutoGenerateColumns="False">
+        <DataGrid x:Name="TasksView" Loaded="TasksView_Loaded" HorizontalGridLinesBrush="DarkGray" AutoGenerateColumns="False" Margin="25,25,25,100" 
+                  CanUserAddRows="False" ColumnHeaderHeight="30" IsReadOnly="True" MouseDoubleClick="TasksView_MouseDoubleClick">
             <DataGrid.Columns>
-                <DataGridTextColumn Header="Номер" x:Name="NumberTask"/>
-                <DataGridTextColumn Header="Наименование" x:Name="NameTask"/>
-                <DataGridTextColumn Header="Категория" x:Name="CatagoryTask"/>
-                <DataGridTextColumn Header="Исполнители" x:Name="ExecutorsTask"/>
-                <DataGridTextColumn Header="Плановая дата выполнения" x:Name="PlanDateTask"/>
-                <DataGridTextColumn Header="Реальная дата выполнения" x:Name="RealDateTask"/>
+                <DataGridTextColumn Width="50" Header="Номер" x:Name="NumberTask" Binding="{Binding Path=Id}"/>
+                <DataGridTextColumn Width="500" Header="Наименование" x:Name="NameTask" Binding="{Binding Path=Name}"/>
+                <DataGridTextColumn Width="100" Header="Категория" x:Name="CatagoryTask" Binding="{Binding Path=Category}"/>
+                <DataGridTextColumn Width="150" Header="Исполнители" x:Name="ExecutorsTask" Binding="{Binding Path=Executors}"/>
+                <DataGridTextColumn Width="200" Header="Плановая дата выполнения" x:Name="PlanDateTask" Binding="{Binding Path=PlanComplitionDate}"/>
+                <DataGridTextColumn Width="200" Header="Реальная дата выполнения" x:Name="RealDateTask" Binding="{Binding Path=RealComplitionDate}"/>
             </DataGrid.Columns>
         </DataGrid>
+        <Button Content="Добавить задачу" HorizontalAlignment="Left" Margin="130,728,0,0" VerticalAlignment="Top" Click="AddTask_Click"/>
+        <Button Content="Удалить задачу" HorizontalAlignment="Left" Margin="1050,728,0,0" VerticalAlignment="Top" Click="DeleteTask_Click"/>
 
     </Grid>
 </Window>
