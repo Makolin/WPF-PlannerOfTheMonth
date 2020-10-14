@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="Планировщие задач на месяц" Height="800" Width="1275">
     <Grid>
-        <DataGrid x:Name="TasksView" Loaded="TasksView_Loaded" HorizontalGridLinesBrush="DarkGray" AutoGenerateColumns="False" Margin="25,25,25,100" 
-                  CanUserAddRows="False" ColumnHeaderHeight="30" IsReadOnly="True" MouseDoubleClick="TasksView_MouseDoubleClick">
+        <DataGrid x:Name="TasksView" HorizontalGridLinesBrush="DarkGray" AutoGenerateColumns="False" Margin="25,25,25,100" 
+                  CanUserAddRows="False" ColumnHeaderHeight="30" IsReadOnly="True" MouseDoubleClick="TasksView_MouseDoubleClick" ItemsSource="{Binding}">
             <DataGrid.Columns>
                 <DataGridTextColumn Width="50" Header="Номер" x:Name="NumberTask" Binding="{Binding Path=Id}"/>
                 <DataGridTextColumn Width="500" Header="Наименование" x:Name="NameTask" Binding="{Binding Path=Name}"/>
